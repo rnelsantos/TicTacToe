@@ -63,6 +63,15 @@
     display: none;
   }
   
+
+
+/*UTIL*/
+
+.tempMarker{
+    color:rgb(219, 219, 219)
+}
+
+
 /*HEADER*/
 
 .head-container{
