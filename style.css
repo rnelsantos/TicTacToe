@@ -1,0 +1,124 @@
+/* Var callouts*/
+:root {
+    --white: #fffbfb;
+    --grey: #f0eef1;
+    --black: #050505;
+    --red: #ff7070;
+    --light-green: #9fff9c;
+    --light-red: #ff9c9c;
+    --border-radius: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 40px;
+    --container-width: 1200px;
+    --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  /*CSS RESET*/
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  #root, #__next {
+    isolation: isolate;
+  }
+
+
+/*holy grail format*/
+.wrapper {
+    display: grid;
+    grid-template-columns:
+      1fr
+      min(800px, 100%)
+      1fr;
+  }
+  .wrapper > * {
+    grid-column: 2;
+    margin:
+  
+  }
+  .full-bleed {
+    width: 100%;
+    grid-column: 1 / 4;
+  }
+  
+  .noDisplay{
+    display: none;
+  }
+  
+/*HEADER*/
+
+.head-container{
+    font-style:normal;
+    font-family:sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:1.5rem;
+    font-size: 20px;
+    box-shadow: 0 0.5rem 0.5rem #0c0c0c21, 6px 5px 12px rgba(184, 184, 184, 0.418);
+}
+
+
+/* Main container*/
+
+  body {
+    background-color: var(--grey);
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 500;
+    word-wrap: break-word;
+    /* footer support */
+    margin-bottom: 100px;
+  }
+
+  .main-container{
+    margin-top:50px;
+    padding:5px;
+    border:2px solid red;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+  }
+
+  .grid-container{
+
+    aspect-ratio: 1/1;
+    width: 70%;
+    align-self:flex-start;
+    min-width:300px;
+    min-height:300px;
+    display:grid;
+    grid-template-columns:  repeat(3, 1fr);
+    justify-content:center;
+    
+  }
+
+  .ticbox{
+    border:3px solid rgb(0, 0, 0);
+  }
+  #box1{border-top:none;border-left:none;}
+  #box2{border-top:none;}
+  #box3{border-top:none;border-right:none;}
+  #box4{border-left:none;}
+  #box6{border-right:none;}
+  #box7{border-bottom:none;border-left:none;}
+  #box8{border-bottom:none;}
+  #box9{border-bottom:none;border-right:none;}
