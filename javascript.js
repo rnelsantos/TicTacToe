@@ -21,6 +21,7 @@ const makeMove = (function ()  {
                         display.board();
                         gameOver = false; 
                         itemLength = 0;
+                        result = "";
                         marker =  firstMarker;}
     const toggleMarker = () => {if(marker==="O"){return marker="X"}else{ return marker="O"}};
     const currentMarker = () => marker;
@@ -89,17 +90,12 @@ const display= (function ()  {
     );
 
     
-    rematchBTN.addEventListener("click", (e) => {
+    rematchBTN.addEventListener("click", (e) => { // reset and rematch button
        rematchBTN.classList.add('hide')
         makeMove.reset();
+        display.board();
     });
     
-
-
-
-
-
-
 
     //commands
     const board = () =>{ 
@@ -162,11 +158,6 @@ const game = (function ()  {
     };                        
     return {checkWinner};
 })();
-
-
-
-
-
 
 
 
