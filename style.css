@@ -132,9 +132,34 @@
   padding-right:1rem;
  }
 
+ .reset{
+  border:2px solid gray;
+  border-radius: 1rem;
+  font-size: 2rem;
+  color:gray;
+  z-index: 1000;
+  background-color:var(--grey);
+  position:absolute;
+  top:px;
+  width:6em;
+  box-shadow: 0 0.5rem 0.5rem #0c0c0c21, 6px 5px 12px rgba(184, 184, 184, 0.418);
+  will-change: transform;
+    transition: transform 450ms;
+ }
+ .reset:hover{
+  transition: transform 125ms;
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 0.5rem #0c0c0c21, 6px 5px 12px rgba(184, 184, 184, 0.418);
+  cursor: pointer;
+ }
 
+.hide{
+  display:none;
+}
  
-
+h2{
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
 

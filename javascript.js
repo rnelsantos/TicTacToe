@@ -39,6 +39,7 @@ const display= (function ()  {
     const resultElement = document.querySelector(".result");
     const slide = document.querySelector(".switch");
     const chooseMarker = document.querySelectorAll(".marker");
+    const rematchBTN = document.querySelector(".reset");
 
     boxElements.forEach((field) =>//makeMove upon click
         field.addEventListener("click", (e) => {
@@ -84,9 +85,15 @@ const display= (function ()  {
             marks.classList.add('chosenMarker');
             slide.classList.remove("switch-X");
         }
-    }   
-    )
+    })
     );
+
+    
+    rematchBTN.addEventListener("click", (e) => {
+       rematchBTN.classList.add('hide')
+        makeMove.reset();
+    });
+    
 
 
 
@@ -99,15 +106,13 @@ const display= (function ()  {
         resultElement.innerText=result;
         for(let i=0; i<=boxElements.length-1;i++) {
             boxElements[i].innerText = makeMove.readField(i);
-        }   
+        }
     };
     
-    const changeMarkerColor = () =>{  chooseMarker.forEach((marks) =>
-        marks.classList.remove("chosenMarker")
-           
-    )};
+    const changeMarkerColor = () =>{  chooseMarker.forEach((marks) => marks.classList.remove("chosenMarker"))};
+    const rematch = () => rematchBTN.classList.remove('hide');
 
-    return {board};
+    return {board,rematch};
 })();
 
 
@@ -140,6 +145,7 @@ const game = (function ()  {
                 gameOver=true;    
                 result= Lastmarked+" "+"wins";
                 display.board();
+                display.rematch();
                 }
 
                 else if (makeMove.getLength() === 9 && gameOver===false) 
@@ -147,6 +153,7 @@ const game = (function ()  {
                 gameOver=true;    
                 result="DRAW";
                 display.board();
+                display.rematch();
                 }
             }
  
@@ -170,7 +177,8 @@ display.board();
 //makeMove.reset();
 //makeMove.boardLog();
 //console.log(makeMove.readField(0));
-
+/*
 console.log(makeMove.readField(0),makeMove.readField(1),makeMove.readField(2));
 console.log(makeMove.readField(3),makeMove.readField(4),makeMove.readField(5))
 console.log(makeMove.readField(6),makeMove.readField(7),makeMove.readField(8))
+*/
