@@ -26,8 +26,9 @@ const makeMove = (function ()  {
     const currentMarker = () => marker;
     const lastMarker = () => {if(marker==="O"){return "X"}else{return "O"}};
     const getLength = () => itemLength;
+    const setMarker = (mark) => firstMarker=mark;
     
-    return {markField, readField, reset, toggleMarker, currentMarker,lastMarker,getLength};
+    return {markField, readField, reset, toggleMarker, currentMarker,lastMarker,getLength,setMarker};
 })();
 
 
@@ -36,6 +37,8 @@ const makeMove = (function ()  {
 const display= (function ()  {  
     const boxElements = document.querySelectorAll(".ticbox");
     const resultElement = document.querySelector(".result");
+    const slide = document.querySelector(".switch");
+    const chooseMarker = document.querySelectorAll(".marker");
 
     boxElements.forEach((field) =>//makeMove upon click
         field.addEventListener("click", (e) => {
@@ -48,6 +51,7 @@ const display= (function ()  {
             }
         })
     );
+
     boxElements.forEach((field) =>//for hoverIn
         field.addEventListener("mouseover", (e) => {
             if(makeMove.readField(e.target.dataset.index) === "" && gameOver===false){
@@ -56,6 +60,7 @@ const display= (function ()  {
             boxElements[Number(e.target.dataset.index)].classList.add('tempMarker'); }    
         })
     );
+
     boxElements.forEach((field) =>//for hoverOut
     field.addEventListener("mouseout", (e) => {
         if(makeMove.readField(e.target.dataset.index) === ""){
@@ -63,13 +68,45 @@ const display= (function ()  {
         boxElements[Number(e.target.dataset.index)].classList.remove('tempMarker');
     })
     );
+
+    chooseMarker.forEach((marks) =>//select marker
+    marks.addEventListener("click", (e) => {
+        marker= e.target.dataset.index;
+        marker= e.target.innerText;
+        //marks.classList.add('chosenMarker')
+        makeMove.setMarker(marker);
+        changeMarkerColor();
+        if(marker==="X"){
+            slide.classList.add("switch-X");
+            marks.classList.add('chosenMarker')
+        } 
+        else {
+            marks.classList.add('chosenMarker');
+            slide.classList.remove("switch-X");
+        }
+    }   
+    )
+    );
+
+
+
+
+
+
+
     //commands
-    const board = () =>{ //boxElements[1].innerText = makeMove.readField(1);
+    const board = () =>{ 
         resultElement.innerText=result;
         for(let i=0; i<=boxElements.length-1;i++) {
             boxElements[i].innerText = makeMove.readField(i);
         }   
     };
+    
+    const changeMarkerColor = () =>{  chooseMarker.forEach((marks) =>
+        marks.classList.remove("chosenMarker")
+           
+    )};
+
     return {board};
 })();
 
@@ -105,7 +142,7 @@ const game = (function ()  {
                 display.board();
                 }
 
-                if (makeMove.getLength() === 9) 
+                else if (makeMove.getLength() === 9 && gameOver===false) 
                 { 
                 gameOver=true;    
                 result="DRAW";
