@@ -239,7 +239,7 @@ h2{
   /* Additional media queries as needed */
   @media screen and (min-width: 901px) {
     .ticbox {
-      font-size: 4em; /* Adjust the font size for larger screens */
+      font-size: 6rem; /* Adjust the font size for larger screens */
       font-weight:600;
     }
   }
